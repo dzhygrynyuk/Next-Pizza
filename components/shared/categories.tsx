@@ -18,7 +18,7 @@ export const Categories: React.FC<Props> = ({ className }) => {
                         activeIndex === index && 'bg-white shadow-md shadow-gray-200 text-primary'
                     )} 
                     key={index}>
-                   <button>{cat}</button> 
+                    <button>{cat}</button> 
                 </a>
             ))}
         </div>
