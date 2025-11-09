@@ -79,38 +79,38 @@ export default function Home() {
                             />
                             <ProductsGroupList 
                                 title="Appetizer"
-                                categoryID={1}
+                                categoryID={2}
                                 items={[
                                     {
-                                        id: 1,
+                                        id: 11,
                                         name: 'All at once',
                                         imageUrl: 'https://primopizza.com.ua/photos/nomenclature_desktop/704-01.jpg',
                                         price: 250,
                                         items: [{price: 250}]
                                     },
                                     {
-                                        id: 2,
+                                        id: 12,
                                         name: 'Chicken wings are tender',
                                         imageUrl: 'https://primopizza.com.ua/photos/nomenclature_desktop/65-01.jpg',
                                         price: 79,
                                         items: [{price: 79}]
                                     },
                                     {
-                                        id: 3,
+                                        id: 13,
                                         name: 'Chili chicken wings',
                                         imageUrl: 'https://primopizza.com.ua/photos/nomenclature_desktop/64-01.jpg',
                                         price: 85,
                                         items: [{price: 85}]
                                     },
                                     {
-                                        id: 4,
+                                        id: 14,
                                         name: 'French fries',
                                         imageUrl: 'https://primopizza.com.ua/photos/nomenclature_desktop/60-01.jpg',
                                         price: 20,
                                         items: [{price: 20}]
                                     },
                                     {
-                                        id: 5,
+                                        id: 15,
                                         name: 'Peasant-style potatoes',
                                         imageUrl: 'https://primopizza.com.ua/photos/nomenclature_desktop/445-01.jpg',
                                         price: 30,
