@@ -113,8 +113,7 @@ async function up() {
         }
     });
 
-    // Pizza Items
-
+    // Pizza Items and Products
     await prisma.productItem.createMany({
         data: [
             // American
@@ -188,6 +187,33 @@ async function up() {
             { productId: 28, price: 5 },
         ],
     });
+
+    // Test Cart
+    await prisma.cart.createMany({
+        data: [
+            {
+                userId: 1,
+                totalAmount: 0,
+                token: '43wewdfsdg22311',
+            },
+            {
+                userId: 2,
+                totalAmount: 0,
+                token: '$43sdfsdg223323',
+            },
+        ]
+    });
+
+    await prisma.cartItem.create({
+        data: {
+            productItemId: 1,
+            cartId: 1,
+            quantity: 2,
+            ingredients: {
+                connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+            }
+        }
+    });
 }
 
 async function down() {
@@ -196,6 +222,8 @@ async function down() {
     await prisma.$executeRaw`TRUNCATE TABLE "Ingredient" RESTART IDENTITY CASCADE`;
     await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
     await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`;
 } 
 
 async function main() {
