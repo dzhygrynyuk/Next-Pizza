@@ -1,15 +1,22 @@
+'use client';
+
 import React from "react";
 import { Title } from "./title";
 import { FilterCheckbox } from "./filter-checkbox";
 import { Input } from "../ui";
 import { RangeSlider } from "./range-slider";
 import { CheckboxFilterGroup } from "./checkbox-filter-group";
+import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 
 interface Props {
     className?: string;
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
+    const { ingredients } = useFilterIngredients();
+
+    const items  = ingredients.map((item) => ({ value: String(item.id), text: item.name }));
+
     return(
         <div className={className}>
             <Title text="Filters" size="sm" className="mb-5 font-bold" />
@@ -32,28 +39,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
                 title="Ingredients"
                 className="mt-5"
                 limit={6}
-                defaultItems={[
-                    {text: 'Cheese sauce', value: '1'},
-                    {text: 'Mozzarella', value: '2'},
-                    {text: 'Garlic', value: '3'},
-                    {text: 'Bacon', value: '4'},
-                    {text: 'Tomatoes', value: '5'},
-                    {text: 'Mushrooms', value: '6'},
-                ]}
-                items={[
-                    {text: 'Cheese sauce', value: '1'},
-                    {text: 'Mozzarella', value: '2'},
-                    {text: 'Garlic', value: '3'},
-                    {text: 'Bacon', value: '4'},
-                    {text: 'Tomatoes', value: '5'},
-                    {text: 'Mushrooms', value: '6'},
-                    {text: 'Cheese sauce', value: '1'},
-                    {text: 'Mozzarella', value: '2'},
-                    {text: 'Garlic', value: '3'},
-                    {text: 'Bacon', value: '4'},
-                    {text: 'Tomatoes', value: '5'},
-                    {text: 'Mushrooms', value: '6'},
-                ]}
+                defaultItems={items.slice(0, 6)}
+                items={items}
             />
         </div>
     );
